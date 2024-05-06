@@ -4,12 +4,14 @@ import os
 from pathlib import Path
 
 
-def run(args: list[str], cwd: Path | str | None = None) -> subprocess.CompletedProcess[str]:
+def run(
+    args: list[str], cwd: Path | str | None = None
+) -> subprocess.CompletedProcess[str]:
     print(f"$ {shlex.join(args)}")
     return subprocess.run(args, check=True, stdout=subprocess.PIPE, cwd=cwd, text=True)
 
 
-def nix_build(package: str) -> subprocess.CompletedProcess[str]:
+def nix_build(package: str) -> str:
     proc = run(["nix", "build", "--print-out-paths", package])
     return proc.stdout.strip()
 
@@ -23,8 +25,20 @@ def main() -> None:
     run(["git", "-C", str(tvix_path), "fetch", "origin", "canon"])
     run(["git", "-C", str(tvix_path), "reset", "--hard", "origin/canon"])
     run(["nix-shell", "--run", "cargo build --release"], cwd=tvix_path)
+    inxi = run(
+        [
+            "nix-shell",
+            "-p",
+            "inxi.override { withRecommends = true; }",
+            "--run",
+            "sudo inxi -F -a -i --slots -xxx -c0 -Z -i -m",
+        ]
+    )
+    Path("hardware.md").write_text(f"```\n{inxi.stdout.strip()}\n```")
     hyperfine_command = [
-        "hyperfine", "--export-markdown", "report.md",
+        "hyperfine",
+        "--export-json",
+        "report.json",
         f"{tvix_path}/target/release/tvix --no-warnings -E 'with import <nixpkgs>{{}}; toString hello'",
         f"{lix_path}/bin/nix-instantiate --eval --json --expr 'with import <nixpkgs>{{}}; toString hello'",
         f"{nix_path}/bin/nix-instantiate --eval --json --expr 'with import <nixpkgs>{{}}; toString hello'",
