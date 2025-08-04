@@ -40,14 +40,13 @@ def main() -> None:
     os.environ["NIX_PATH"] = f"nixpkgs={nixpkgs}"
     hyperfine_command = [
         "hyperfine",
-        "--show-output",
         "--export-markdown",
         "README.md",
         "--export-json",
         "report.json",
-        f"taskset -c 0 {snix_path}/bin/snix --no-warnings -E 'with import <nixpkgs>{{}}; toString hello'",
-        f"taskset -c 0 {lix_path}/bin/nix-instantiate --eval --json --expr 'with import <nixpkgs>{{}}; toString hello'",
-        f"taskset -c 0 {nix_path}/bin/nix-instantiate --eval --json --expr 'with import <nixpkgs>{{}}; toString hello'",
+        f"taskset -c 0 {snix_path}/bin/snix --no-warnings -E 'with import <nixpkgs>{{}}; toString firefox'",
+        f"taskset -c 0 {lix_path}/bin/nix-instantiate --eval --json --expr 'with import <nixpkgs>{{}}; toString firefox'",
+        f"taskset -c 0 {nix_path}/bin/nix-instantiate --eval --json --expr 'with import <nixpkgs>{{}}; toString firefox'",
     ]
     run(["nix", "shell", "nixpkgs#hyperfine", "--command"] + hyperfine_command)
 

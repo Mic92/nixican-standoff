@@ -7,7 +7,7 @@ System:
     amd_iommu=on console=ttyS0,115200 console=tty0 kvm_amd.sev=1 kvm_amd.sev_es=1
     kvm_amd.sev_snp=1 sp5100_tco.blacklist=yes hugepagesz=1GB hugepages=0 hugepagesz=2MB
     hugepages=1000 nohibernate loglevel=4 lsm=landlock,yama,bpf
-  Console: pty pts/15 DM: LightDM v: 1.32.0 Distro: NixOS 25.05 (Warbler)
+  Console: pty pts/13 DM: LightDM v: 1.32.0 Distro: NixOS 25.05 (Warbler)
 Machine:
   Type: Server System: Dell product: PowerEdge R7515 v: N/A serial: 9P0PSH3 Chassis: type: 23
     serial: 9P0PSH3
@@ -15,7 +15,7 @@ Machine:
     part-nu: SKU=08FD;ModelName=PowerEdge R7515 uuid: 4c4c4544-0050-3010-8050-b9c04f534833
     UEFI: Dell v: 2.9.3 date: 08/05/2022
 Memory:
-  System RAM: total: 1024 GiB available: 991.23 GiB used: 127.21 GiB (12.8%)
+  System RAM: total: 1024 GiB available: 991.23 GiB used: 124.85 GiB (12.6%)
   Array-1: capacity: 2 TiB slots: 16 modules: 16 EC: Multi-bit ECC max-module-size: 128 GiB
     note: est.
   Device-1: A1 type: DDR4 detail: synchronous registered (buffered) size: 64 GiB speed:
@@ -78,15 +78,15 @@ CPU:
     microcode: 0xA001173
   Topology: cpus: 1x dies: 1 clusters: 1 cores: 64 smt: <unsupported> cache: L1: 4 MiB
     desc: d-64x32 KiB; i-64x32 KiB L2: 32 MiB desc: 64x512 KiB L3: 256 MiB desc: 8x32 MiB
-  Speed (MHz): avg: 2000 min/max: 1500/3721 boost: disabled base/boost: 2000/3900 scaling:
-    driver: acpi-cpufreq governor: schedutil volts: 1.8 V ext-clock: 2000 MHz cores: 1: 2000 2: 2000
-    3: 2000 4: 2000 5: 2000 6: 2000 7: 2000 8: 2000 9: 2000 10: 2000 11: 2000 12: 2000 13: 2000
-    14: 2000 15: 2000 16: 2000 17: 2000 18: 2000 19: 2000 20: 2000 21: 2000 22: 2000 23: 2000
-    24: 2000 25: 2000 26: 2000 27: 2000 28: 2000 29: 2000 30: 2000 31: 2000 32: 2000 33: 2000
-    34: 2000 35: 2000 36: 2000 37: 2000 38: 2000 39: 2000 40: 2000 41: 2000 42: 2000 43: 2000
-    44: 2000 45: 2000 46: 2000 47: 2000 48: 2000 49: 2000 50: 2000 51: 2000 52: 2000 53: 2000
-    54: 2000 55: 2000 56: 2000 57: 2000 58: 2000 59: 2000 60: 2000 61: 2000 62: 2000 63: 2000
-    64: 2000 bogomips: 255536
+  Speed (MHz): avg: 1500 min/max: 1500/3721 boost: disabled base/boost: 2000/3900 scaling:
+    driver: acpi-cpufreq governor: schedutil volts: 1.8 V ext-clock: 2000 MHz cores: 1: 1500 2: 1500
+    3: 1500 4: 1500 5: 1500 6: 1500 7: 1500 8: 1500 9: 1500 10: 1500 11: 1500 12: 1500 13: 1500
+    14: 1500 15: 1500 16: 1500 17: 1500 18: 1500 19: 1500 20: 1500 21: 1500 22: 1500 23: 1500
+    24: 1500 25: 1500 26: 1500 27: 1500 28: 1500 29: 1500 30: 1500 31: 1500 32: 1500 33: 1500
+    34: 1500 35: 1500 36: 1500 37: 1500 38: 1500 39: 1500 40: 1500 41: 1500 42: 1500 43: 1500
+    44: 1500 45: 1500 46: 1500 47: 1500 48: 1500 49: 1500 50: 1500 51: 1500 52: 1500 53: 1500
+    54: 1500 55: 1500 56: 1500 57: 1500 58: 1500 59: 1500 60: 1500 61: 1500 62: 1500 63: 1500
+    64: 1500 bogomips: 255536
   Flags: avx avx2 ht lm nx pae sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3 svm
   Vulnerabilities:
   Type: gather_data_sampling status: Not affected
@@ -106,7 +106,7 @@ CPU:
 Graphics:
   Device-1: Matrox Systems Integrated G200eW3 Graphics driver: mgag200 v: kernel ports:
     active: VGA-1 empty: none bus-ID: c3:00.0 chip-ID: 102b:0536 class-ID: 0300
-  Display: unspecified server: X.org v: 1.21.1.18 driver: gpu: mgag200 tty: 128x91
+  Display: unspecified server: X.org v: 1.21.1.18 driver: gpu: mgag200 tty: 211x64
   Monitor-1: VGA-1 size-res: N/A in console modes: max: 1024x768 min: 640x480
   API: EGL v: 1.5 platforms: device: 0 drv: swrast surfaceless: drv: swrast
     inactive: gbm,wayland,x11
@@ -159,22 +159,22 @@ Drives:
   ID-1: /dev/nvme0n1 maj-min: 259:5 vendor: Dell model: Ent NVMe AGN MU AIC 1.6TB size: 1.46 TiB
     block-size: physical: 512 B logical: 512 B tech: SSD serial: S61ANA0T700017 fw-rev: 2.0.2
     temp: 18 ° (291 K) C
-  SMART: yes health: PASSED on: 1y 335d 4h cycles: 21 read-units: 24,190,396 [12.3 TB]
+  SMART: yes health: PASSED on: 1y 335d 4h cycles: 21 read-units: 24,190,400 [12.3 TB]
     written-units: 16,330,485 [8.36 TB]
   ID-2: /dev/nvme1n1 maj-min: 259:6 vendor: Dell model: Ent NVMe AGN MU AIC 1.6TB size: 1.46 TiB
     block-size: physical: 4096 B logical: 4096 B tech: SSD serial: S61ANA0T700063 fw-rev: 2.0.2
     temp: 18 ° (291 K) C scheme: GPT
-  SMART: yes health: PASSED on: 1y 335d 4h cycles: 21 read-units: 32,709,087 [16.7 TB]
-    written-units: 47,532,851 [24.3 TB]
+  SMART: yes health: PASSED on: 1y 335d 5h cycles: 21 read-units: 32,709,701 [16.7 TB]
+    written-units: 47,534,072 [24.3 TB]
   ID-3: /dev/nvme2n1 maj-min: 259:9 vendor: Samsung model: SSD 970 EVO Plus 1TB size: 931.51 GiB
     block-size: physical: 512 B logical: 512 B speed: 31.6 Gb/s lanes: 4 tech: SSD
     serial: S4EWNX0R513894H fw-rev: 2B2QEXM7 temp: 28.9 C
-  SMART: yes health: PASSED on: 152d 2h cycles: 29 read-units: 144,370,200 [73.9 TB]
+  SMART: yes health: PASSED on: 152d 2h cycles: 29 read-units: 144,370,204 [73.9 TB]
     written-units: 48,371,835 [24.7 TB]
   ID-4: /dev/nvme3n1 maj-min: 259:0 vendor: SK Hynix model: PC801 NVMe 1TB size: 953.87 GiB
     block-size: physical: 512 B logical: 512 B speed: 63.2 Gb/s lanes: 4 tech: SSD
     serial: SNB5N744011305V1P fw-rev: 51002141 temp: 32.9 C scheme: GPT
-  SMART: yes health: PASSED on: 2y 41d 10h cycles: 133 read-units: 2,385,499 [1.22 TB]
+  SMART: yes health: PASSED on: 2y 41d 11h cycles: 133 read-units: 2,385,506 [1.22 TB]
     written-units: 5,705,019 [2.92 TB]
   ID-5: /dev/sda maj-min: 8:0 vendor: Ardor Gaming model: AL15SEB060NY size: 558.91 GiB
     block-size: physical: 512 B logical: 512 B speed: <unknown> tech: HDD rpm: 10000 serial: N/A
@@ -192,14 +192,14 @@ Swap:
   Alert: No swap data was found.
 Sensors:
   Src: ipmi System Temperatures: cpu: N/A mobo: N/A
-  Fan Speeds (rpm): cpu: 9840 mobo: 9960 fan-3: 9960 fan-4: 9960 fan-5: 10080 fan-6: 9840
+  Fan Speeds (rpm): cpu: 9840 mobo: 9960 fan-3: 9960 fan-4: 9960 fan-5: 9720 fan-6: 10080
   Power: 12v: N/A 5v: N/A 3.3v: N/A vbat: N/A dimm-p1: N/A dimm-p2: N/A
-  Src: lm-sensors System Temperatures: cpu: 41.0 C mobo: N/A
+  Src: lm-sensors System Temperatures: cpu: 40.2 C mobo: N/A
   Fan Speeds (rpm): N/A
 Info:
-  Processes: 969 Power: uptime: 4d 8h 57m states: freeze,mem suspend: s2idle wakeups: 0
+  Processes: 992 Power: uptime: 4d 9h 3m states: freeze,mem suspend: s2idle wakeups: 0
     hibernate: disabled image: 396.48 GiB Init: systemd v: 257 default: graphical tool: systemctl
   Packages: pm: nix-default pkgs: 0 pm: nix-sys pkgs: 987 libs: 234 pm: nix-usr pkgs: 0
     Compilers: gcc: 14.2.1 Shell: Sudo (sudo) v: 1.9.17p1 default: Bash v: 5.2.37
-    running-in: pty pts/15 inxi: 3.3.38
+    running-in: pty pts/13 inxi: 3.3.38
 ```
