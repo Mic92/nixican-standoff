@@ -19,12 +19,12 @@ def nix_build(package: str) -> str:
 def main() -> None:
     lix_path = nix_build("git+https://git.lix.systems/lix-project/lix")
     nix_path = nix_build("github:NixOS/nix")
-    tvix_path = Path("tvix")
-    if not tvix_path.exists():
-        run(["git", "clone", "https://github.com/tvlfyi/tvix"])
-    run(["git", "-C", str(tvix_path), "fetch", "origin", "canon"])
-    run(["git", "-C", str(tvix_path), "reset", "--hard", "origin/canon"])
-    run(["nix-shell", "--run", "cargo build --release"], cwd=tvix_path)
+    snix_path = Path("nix")
+    if not snix_path.exists():
+        run(["git", "clone", "https://git.snix.dev/snix/snix"])
+    run(["git", "-C", str(snix_path), "fetch", "origin", "canon"])
+    run(["git", "-C", str(snix_path), "reset", "--hard", "origin/canon"])
+    run(["nix-shell", "--run", "cargo build --release"], cwd=snix_path)
     inxi = run(
         [
             "nix-shell",
@@ -39,7 +39,7 @@ def main() -> None:
         "hyperfine",
         "--export-json",
         "report.json",
-        f"{tvix_path}/target/release/tvix --no-warnings -E 'with import <nixpkgs>{{}}; toString hello'",
+        f"{snix_path}/target/release/tvix --no-warnings -E 'with import <nixpkgs>{{}}; toString hello'",
         f"{lix_path}/bin/nix-instantiate --eval --json --expr 'with import <nixpkgs>{{}}; toString hello'",
         f"{nix_path}/bin/nix-instantiate --eval --json --expr 'with import <nixpkgs>{{}}; toString hello'",
     ]
